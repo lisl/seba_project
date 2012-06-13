@@ -4986,6 +4986,10 @@ a.badge:hover {
 	padding:0px 10px 10px 0px;
 }
 
+.hero-unit a {
+	text-decoration: none;
+}
+
 .pull-right {
   float: right;
 }
