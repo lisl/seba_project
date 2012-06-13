@@ -4930,8 +4930,8 @@ a.badge:hover {
 }
 
 .hero-unit {
-  padding: 50px;
-  margin-bottom: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
   background-color: #eeeeee;
   -webkit-border-radius: 6px;
      -moz-border-radius: 6px;
@@ -4951,6 +4951,39 @@ a.badge:hover {
   font-weight: 200;
   line-height: 27px;
   color: inherit;
+}
+
+.hero-unit table {
+	width: 100%; 
+	background-color: #bbd7f8; 
+	border-style:solid; 
+	border-width:medium; 
+	border-color: #2388db;
+}
+.hero-unit_row-0-0 {
+	width: 80%; 
+	font-weight: bold; 
+	font-size: large; 
+	padding:10px 10px;
+}
+
+.hero-unit_row-0-1 {
+	width: 20%; 
+	font-weight: bold; 
+	font-size: large; 
+	text-align: right; 
+	padding:10px 10px;
+}
+
+.hero-unit_row-1-0{
+	width: 80%; 
+	padding:0px 0px 10px 10px;
+}
+
+.hero-unit_row-1-1 {
+	width: 20%; 
+	text-align: right; 
+	padding:0px 10px 10px 0px;
 }
 
 .pull-right {
