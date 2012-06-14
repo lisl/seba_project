@@ -3,6 +3,7 @@
 # ~~~~
 
 # Home page
+GET     /postATask                              Application.postATask
 GET     /                                       Application.index
 
 # Ignore favicon requests
