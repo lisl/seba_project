@@ -4,7 +4,7 @@
 
 # Home page
 GET     /postATask                              Application.postATask
-GET     /                                       Application.index
+GET     /                                       Application.allTask
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
