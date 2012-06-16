@@ -10,7 +10,22 @@ public class Application extends Controller
 		render();
 	}
 
-	public static void allTask()
+	public static void allTasks(String categoryId)
+	{
+		if (categoryId == null)
+		{
+			categoryId = "allCategories";
+		}
+		
+		render(categoryId);
+	}
+	
+	public static void about()
+	{
+		render();
+	}
+	
+	public static void contactUs()
 	{
 		render();
 	}
