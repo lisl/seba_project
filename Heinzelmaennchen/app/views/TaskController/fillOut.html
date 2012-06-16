@@ -1,0 +1,30 @@
+#{extends 'main.html' /}
+#{set title:'Post a Task' /}
+
+<h2>Post a Task</h2>
+
+<form action="@{TaskController.submit}" method="POST">
+	
+	<h3>1 Choose a category</h3>
+    <select name="task.categoryId">
+    	<option value="household">Household</option>
+    	<option value="handyman">Handyman</option>
+    </select>
+    
+    <h3>2 Title</h3>
+    <input type="text" name="task.title" />
+    
+    <h3>3 Description</h3> 
+    <input type="text" name="task.description" />
+    
+    <h3>4 Location</h3> 
+    <input type="text" name="task.location" />
+    
+    <h3>5 Payment</h3> 
+    <input type="text" name="task.payment" />
+    <p style="color:#A4A4A4">Hint: The average amount for similar tasks was about {TODO} Euro.</p>
+    
+    <br/>
+    <input type="submit" value="Continue to the preview" />
+    
+</form> 

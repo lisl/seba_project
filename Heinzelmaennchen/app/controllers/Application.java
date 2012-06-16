@@ -3,21 +3,11 @@ package controllers;
 import play.mvc.Controller;
 
 public class Application extends Controller
-{
-
-	public static void postATask()
+{	
+	public static void index()
 	{
-		render();
-	}
-
-	public static void allTasks(String categoryId)
-	{
-		if (categoryId == null)
-		{
-			categoryId = "allCategories";
-		}
-		
-		render(categoryId);
+		//redirect
+		TaskController.showAll("allCategories");
 	}
 	
 	public static void about()

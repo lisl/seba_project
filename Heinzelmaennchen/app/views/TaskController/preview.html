@@ -1,0 +1,16 @@
+#{extends 'main.html' /} 
+#{set title:'Task Preview' /}
+
+<h2>Preview of Task "${task.title}"</h2>
+
+Category: ${task.categoryId}
+
+<form action="@{TaskController.fillOut}" method="GET">
+	<input type="hidden" name="taskId" value="${task.taskId}"/>
+	<input type="submit" value="Edit">
+</form>
+
+<form action="@{TaskController.save}" method="POST">
+	<input type="hidden" name="taskId" value="${task.taskId}"/>
+	<input type="submit" value="Post">
+</form>

@@ -3,11 +3,13 @@
 # ~~~~
 
 # Home page
-GET     /postATask                              Application.postATask
+GET     /postATask                              TaskController.fillOut
+GET     /allTasks                           	TaskController.showAll
+
 GET     /about                              	Application.about
 GET     /contactUs                              Application.contactUs
-GET     /allTasks                           	Application.allTasks
-GET     /                                       Application.allTasks
+
+GET     /                                       Application.index
 
 # Ignore favicon requests
 GET     /favicon.ico                            404
