@@ -9,6 +9,8 @@ body {
   }
 }
 
+/* TASK LIST */
+
 #task-categories {
   padding: 9px 0;
 }
@@ -41,4 +43,10 @@ body {
 .task-price,
 .task-location {
   float: right;
+}
+
+/* PREVIEW TASK */
+#edit-task {
+  float: left;
+  margin-right: 1em;
 }

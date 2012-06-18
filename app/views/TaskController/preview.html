@@ -3,26 +3,30 @@
 
 <h2>Preview of Task "${task.title}"</h2>
 
-Category: ${task.categoryId}
+<p>
+	Category: ${task.categoryId}<br />
+	Title: ${task.title}<br />
+	Description: ${task.description}<br />
+	Location: ${task.location}<br />
+	Reward: ${task.payment}
+</p>
 
-Description: ${task.description}
-
-<form action="@{TaskController.fillOut}" method="GET">
+<form id="edit-task" action="@{TaskController.fillOut}" method="GET">
     <input type="hidden" name="task.categoryId" />
     <input type="hidden" name="task.title" />
     <input type="hidden" name="task.description" />
     <input type="hidden" name="task.location" />
     <input type="hidden" name="task.payment" />
     
-	<input type="submit" value="Edit">
+	<input class="btn" type="submit" value="Go back to edit" />
 </form>
 
-<form action="@{TaskController.save}" method="POST">
+<form id="post-task" action="@{TaskController.save}" method="POST">
     <input type="hidden" name="task.categoryId" />
     <input type="hidden" name="task.title" />
     <input type="hidden" name="task.description" />
     <input type="hidden" name="task.location" />
     <input type="hidden" name="task.payment" />
     
-	<input type="submit" value="Post">
+	<input class="btn btn-success" type="submit" value="Post the task!" />
 </form>
