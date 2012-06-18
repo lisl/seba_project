@@ -1,18 +1,26 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
-public class Task {
+import play.db.jpa.Model;
 
-	public String taskId;
-	
-	//@ManyToOne
-	public Category category;
-	
+@Entity
+public class Task extends Model{
+
+	@Id
+	@GeneratedValue
+	public int taskId;
 	public String title;
 	public String description;
 	public String location;
 	public String payment;
+	
+	
+	@ManyToOne
+	public Category category;
 	
 	public void setCategoryId(String value) {
 		category = null;
