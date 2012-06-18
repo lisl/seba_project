@@ -1,20 +1,21 @@
 package controllers;
 
 import models.Task;
+import play.db.jpa.JPA;
 import play.mvc.Controller;
 
 public class TaskController extends Controller
 {
-	public static void fillOut(String taskId)
+	public static void fillOut(Task task)
 	{
-		if (taskId == null) {
+		if (task == null) {
 			//new task
 			render();
 		}
 		else {
 			//TODO load existing task by id
 			//edit task
-			render();
+			render(task);
 		}
 	}
 	
@@ -29,8 +30,10 @@ public class TaskController extends Controller
 		render(task);
 	}
 	
-	public static void save(String taskId)
+	public static void save(Task task)
 	{
+		JPA.em().persist(task);
+
 		//redirect to this task's category
 		showAll("TODO");
 	}
