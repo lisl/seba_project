@@ -2,6 +2,7 @@ package models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
@@ -10,9 +11,6 @@ import play.db.jpa.Model;
 @Entity
 public class Task extends Model{
 
-	@Id
-	@GeneratedValue
-	public int taskId;
 	public String title;
 	public String description;
 	public String location;
