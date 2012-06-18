@@ -1,0 +1,19 @@
+# OS noise
+.DS_Store
+._*
+Thumbs.db
+.Spotlight-V100
+.Trashes
+
+# Eclipse
+eclipse
+.project
+.classpath
+.settings
+
+# Play framework
+tmp
+modules
+lib
+test-result
+logs
