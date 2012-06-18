@@ -3,9 +3,24 @@
 
 <h2>Preview of Task "${task.title}"</h2>
 
-Category: ${task.categoryId}
+<div>
+	Category: ${task.categoryId}
+</div>
+<div>
+	Title: ${task.title}
+</div>
+<div>
+	Description: ${task.description}
+</div>
+<div>
+	Location: ${task.location}
+</div>
+<div>
+	Payment: ${task.payment}
+</div>
 
-Description: ${task.description}
+<br/>
+<br/>
 
 <form action="@{TaskController.fillOut}" method="GET">
     <input type="hidden" name="task.categoryId" />
