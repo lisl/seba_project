@@ -34,6 +34,8 @@ public class TaskController extends Controller
 		
 		if(validation.hasErrors())
 		{
+			task.refresh();
+			
 			List<Category> categories = Category.findAllOrdered();
             render("@fillOut", categories, task);
         }
@@ -67,7 +69,7 @@ public class TaskController extends Controller
 		}
 		else
 		{
-			selectedCategory = Category.find("byCategoryId", selectedCategoryId).first();
+			selectedCategory = Category.find("FROM Category AS c WHERE c.categoryId = ?", selectedCategoryId).first();
 		}
 		
 		List<Category> allCategories = Category.findAllOrdered();

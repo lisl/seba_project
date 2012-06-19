@@ -31,7 +31,7 @@ public class Task extends Model
 	
 	public void setCategoryId(String value)
 	{
-		category = Category.find("byCategoryId", value).first();
+		category = Category.find("FROM Category AS c WHERE c.categoryId = ?", value).first();
 	}
 	
 	public String getCategoryId()
