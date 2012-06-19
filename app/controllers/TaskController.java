@@ -22,12 +22,12 @@ public class TaskController extends Controller
 	public static void submit(Task task)
 	{
 		//redirect to the page preview
-		preview(task);
+		view(task, true);
 	}
 	
-	public static void preview(Task task)
+	public static void view(Task task, boolean isPreview)
 	{
-		render(task);
+		render(task, isPreview);
 	}
 	
 	public static void save(Task task)
