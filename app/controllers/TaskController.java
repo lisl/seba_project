@@ -48,7 +48,7 @@ public class TaskController extends Controller
 	
 	public static void save(Task task)
 	{
-		//TODO: BUG
+		//TODO: BUG 43897498754789
 		task.category.save();
 		//task.category.merge();
 		task.save();
@@ -56,13 +56,23 @@ public class TaskController extends Controller
 		view(task, false);
 	}
 	
-	public static void showAll(String categoryId)
+	public static void showAll(String selectedCategoryId)
 	{
-		if (categoryId == null)
+		Category selectedCategory;
+		
+		if (selectedCategoryId == null || selectedCategoryId.isEmpty())
 		{
-			categoryId = "allCategories";
+			selectedCategoryId = Category.NOT_SELECTED;
+			selectedCategory = null;
+		}
+		else
+		{
+			selectedCategory = Category.find("byCategoryId", selectedCategoryId).first();
 		}
 		
-		render(categoryId);
+		List<Category> allCategories = Category.findAllOrdered();
+		List<Task> tasksOfCurrentCategory = selectedCategory == null ? (List) Task.findAll() : selectedCategory.tasks;
+		
+		render(allCategories, tasksOfCurrentCategory, selectedCategoryId);
 	}
 }

@@ -5,14 +5,22 @@
   <div id="task-categories" class="well sidebar-nav">
     <ul class="nav nav-list">
       <li class="nav-header">Categories</li>
-      <li><a href="/allTasks?categoryId=household">Household</a></li>
-      <li><a href="/allTasks?categoryId=handyman">Handyman</a></li>
-      <li><a data-toggle="collapse" data-target=".virtualAssist" href="/allTasks?categoryId=virtualAssistance">Virtual assistance</a></li>
-      <li class = "virtualAssist collapse in"><a href="/allTasks?categoryId=fixComputers" style = "margin-left: 5px;">Fix computers</a></li>
-      <li class = "virtualAssist collapse in"><a href="/allTasks?categoryId=transferLPs" style = "margin-left: 5px;">Transfer LPs</a></li>
-      <li><a href="/allTasks?categoryId=officeHelp">Office help</a></li>
-      <li><a href="/allTasks?categoryId=shopping">Shopping</a></li>
-      <li><a href="/allTasks?categoryId=delivery">Delivery</a></li>
+      
+      #{list allCategories, as:'c'}
+      	<li>
+      	
+      		#{if selectedCategoryId == c.categoryId}
+      			<b>
+      		#{/if}
+      		
+      		<a href="/allTasks?categoryId=${c.categoryId}">${c.categoryName}</a>
+      		
+      		#{if selectedCategoryId.equals(c.categoryId)}
+      			</b>
+      		#{/if}
+      		
+      	</li>
+	  #{/list}
       
     </ul>
   </div><!--/.well -->
@@ -22,38 +30,28 @@
 
 	<ul class="task-list">
 		
-		<a href="#">
-			<li class="task">
-				<h3 class="task-title">
-					Pick up laundry
-					<span class="task-price">30 €</span>
-				</h3>
-				<p class="task-location">Berlin</p>
-				<p class="task-description">Please pick up my laundry this afternoon.</p>
-			</li>
-		</a>
+		#{if tasksOfCurrentCategory.isEmpty()}
+			<div>
+				No tasks exist in this category.
+			</div>
+		#{/if}
+		#{else}
 		
-		<a href="#">
-			<li class="task">
-				<h3 class="task-title">
-					Pick up laundry
-					<span class="task-price">30 €</span>
-				</h3>
-				<p class="task-location">Berlin</p>
-				<p class="task-description">Please pick up my laundry this afternoon.</p>
-			</li>
-		</a>
-		
-		<a href="#">
-			<li class="task">
-				<h3 class="task-title">
-					Pick up laundry
-					<span class="task-price">30 €</span>
-				</h3>
-				<p class="task-location">Berlin</p>
-				<p class="task-description">Please pick up my laundry this afternoon.</p>
-			</li>
-		</a>
+			#{list tasksOfCurrentCategory, as:'t'}
+			
+			    <a href="@{view(t)}">
+					<li class="task">
+						<h3 class="task-title">
+							${t.title}
+							<span class="task-price">${t.payment} $</span>
+						</h3>
+						<p class="task-location">${t.location}</p>
+						<p class="task-description">${t.description}</p>
+					</li>
+				</a>
+				
+			#{/list}
+		#{/else}
 		
 	</ul>
 

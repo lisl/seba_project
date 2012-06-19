@@ -22,11 +22,27 @@ public class InitData
 	private static void init()
 	{
 		initCategories();
+		initTasks();
 	}
 	
 	private static void initCategories()
 	{
 		new Category("household", "Household").save();
 		new Category("handyman", "Handyman").save();
+		new Category("fixComputers", "Fix Computers").save();
+		new Category("officeHelp", "Office Help").save();
+		new Category("shopping", "Shopping").save();
+		new Category("delivery", "Delivery").save();
+	}
+	
+	private static void initTasks()
+	{
+		Task t = new Task();
+		t.title = "Pick up laundry";
+		t.description = "Please pick up my laundry this afternoon.";
+		t.category = Category.findAllOrdered().get(0);
+		t.location = "Berlin";
+		t.payment = "30";
+		t.save();
 	}
 }

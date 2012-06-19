@@ -5,4 +5,5 @@ TODO until presentation 3:
 - Facebook login
 - put the logo into the left corner?
 - Facebook like on every page??
+- BUG 43897498754789 when saving a task
 - ...
