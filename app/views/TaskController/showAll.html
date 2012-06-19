@@ -13,7 +13,7 @@
       			<b>
       		#{/if}
       		
-      		<a href="/allTasks?categoryId=${c.categoryId}">${c.categoryName}</a>
+      		<a href="@{showAll(c.categoryId)}">${c.categoryName}</a>
       		
       		#{if selectedCategoryId.equals(c.categoryId)}
       			</b>
