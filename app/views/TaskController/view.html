@@ -9,8 +9,14 @@
 	Task "${task.title}"
 </h2>
 
+#{ifnot isPreview}
+	<div style="background-color: #A9F5A9;">
+		<b>The task has been posted successfully!</b>
+	</div>
+#{/ifnot}
+
 <p>
-	Category: ${task.categoryId}
+	Category: ${task.category.categoryName}
 	<br />
 	Title: ${task.title}
 	<br />
@@ -25,4 +31,8 @@
     <a href="@{save(task)}">Post!</a>
     <a href="@{fillOut(task)}">Edit</a>
 #{/if}
+#{else}
+    <a href="@{fillOut}">Post another task</a>
+    <a href="@{Application.index}">Back to the main page</a>
+#{/else}
 

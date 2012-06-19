@@ -38,7 +38,6 @@ public class TaskController extends Controller
             render("@fillOut", categories, task);
         }
 		
-		//redirect to the page preview
 		view(task, true);
 	}
 	
@@ -49,11 +48,12 @@ public class TaskController extends Controller
 	
 	public static void save(Task task)
 	{
+		//TODO: BUG
 		task.category.save();
+		//task.category.merge();
 		task.save();
 
-		//redirect to this task's category
-		showAll("TODO");
+		view(task, false);
 	}
 	
 	public static void showAll(String categoryId)
