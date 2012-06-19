@@ -13,8 +13,13 @@
 		
       	<div class="controls">
 	      <select id="task-categoryId" name="${field.name}">
-	      	<option value="household">Household</option>
-	      	<option value="handyman">Handyman</option>
+	      
+		    #{list categories, as:'c'}
+	    		<option value="${c.categoryId}" #{if c.categoryId=task.categoryId} selected="selected" #{/if}>
+	    			${c.categoryName}
+	    		</option>
+			#{/list}
+	      	
 	      </select>
 	    </div>
 	    

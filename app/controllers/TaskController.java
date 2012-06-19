@@ -1,6 +1,10 @@
 package controllers;
 
+import java.util.List;
+
+import models.Category;
 import models.Task;
+import play.data.validation.Valid;
 import play.db.jpa.JPA;
 import play.mvc.Controller;
 
@@ -8,19 +12,25 @@ public class TaskController extends Controller
 {
 	public static void fillOut(Task task)
 	{
+		List<Category> categories = Category.getCategories();
+		
 		if (task == null) {
 			//new task
-			render();
+			render(categories);
 		}
 		else {
-			//TODO load existing task by id
 			//edit task
-			render(task);
+			render(categories, task);
 		}
 	}
 	
-	public static void submit(Task task)
+	public static void submit(@Valid Task task)
 	{
+		if(validation.hasErrors())
+		{
+            render("@fillOut", task);
+        }
+		
 		//redirect to the page preview
 		view(task, true);
 	}
