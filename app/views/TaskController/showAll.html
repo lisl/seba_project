@@ -39,7 +39,7 @@
 		
 			#{list tasksOfCurrentCategory, as:'t'}
 			
-			    <a href="@{view(t)}">
+			    <a href="@{view(t, false, false)}">
 					<li class="task">
 						<h3 class="task-title">
 							${t.title}
