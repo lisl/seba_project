@@ -28,7 +28,8 @@ public class TaskController extends Controller
 	{
 		if(validation.hasErrors())
 		{
-            render("@fillOut", task);
+			List<Category> categories = Category.getCategories();
+            render("@fillOut", categories, task);
         }
 		
 		//redirect to the page preview

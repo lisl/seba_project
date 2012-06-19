@@ -15,9 +15,7 @@
 	      <select id="task-categoryId" name="${field.name}">
 	      
 		    #{list categories, as:'c'}
-	    		<option value="${c.categoryId}" #{if c.categoryId=task.categoryId} selected="selected" #{/if}>
-	    			${c.categoryName}
-	    		</option>
+	    		<option value="${c.categoryId}" #{if (c.categoryId == task.categoryId)} selected="selected" #{/if}>${c.categoryName}</option>
 			#{/list}
 	      	
 	      </select>
