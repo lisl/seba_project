@@ -14,6 +14,8 @@
       	<div class="controls">
 	      <select id="task-categoryId" name="${field.name}">
 	      
+	      	<option value="notSelected">Please select</option>
+	      
 		    #{list categories, as:'c'}
 	    		<option value="${c.categoryId}" #{if (c.categoryId == task.categoryId)} selected="selected" #{/if}>${c.categoryName}</option>
 			#{/list}

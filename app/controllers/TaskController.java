@@ -2,17 +2,18 @@ package controllers;
 
 import java.util.List;
 
+import models.Categories;
 import models.Category;
 import models.Task;
+import play.data.validation.Error;
 import play.data.validation.Valid;
-import play.db.jpa.JPA;
 import play.mvc.Controller;
 
 public class TaskController extends Controller
 {
 	public static void fillOut(Task task)
 	{
-		List<Category> categories = Category.getCategories();
+		List<Category> categories = Categories.getCategories();
 		
 		if (task == null) {
 			//new task
@@ -26,9 +27,14 @@ public class TaskController extends Controller
 	
 	public static void submit(@Valid Task task)
 	{
+		if (task.category == null)
+		{
+			//validation.errors().add(new Error("no-category", "No category selected", new String[]{}));
+		}
+		
 		if(validation.hasErrors())
 		{
-			List<Category> categories = Category.getCategories();
+			List<Category> categories = Categories.getCategories();
             render("@fillOut", categories, task);
         }
 		
@@ -43,6 +49,7 @@ public class TaskController extends Controller
 	
 	public static void save(Task task)
 	{
+		task.category.save();
 		task.save();
 
 		//redirect to this task's category

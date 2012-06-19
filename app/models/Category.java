@@ -1,24 +1,25 @@
 package models;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 import play.db.jpa.Model;
 
 @Entity
-public class Category extends Model
+public class Category extends Model implements Comparable<Category>
 {
-	@Id
+	public static final String NOT_SELECTED = "notSelected";
+	
 	public String categoryId;
 	public String categoryName;
 	
-	@OneToMany
+	@OneToMany(fetch=FetchType.LAZY)
 	public List<Task> tasks;
-	
+		
 	public Category()
 	{
 		
@@ -30,13 +31,17 @@ public class Category extends Model
 		this.categoryName = categoryName;
 	}
 
-	public final static List<Category> getCategories()
+
+	@Override
+	public int compareTo(Category c)
 	{
-		List<Category> categories = new LinkedList<Category>();
-		
-		categories.add(new Category("household", "Household"));
-		categories.add(new Category("handyman", "Handyman"));
-		
-		return categories;
+		if (c == null)
+		{
+			return -1;
+		}
+		else
+		{
+			return this.categoryName.compareTo(c.categoryName);
+		}
 	}
 }

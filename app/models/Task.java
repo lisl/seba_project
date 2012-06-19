@@ -1,11 +1,10 @@
 package models;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
+import play.data.validation.IsTrue;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -27,16 +26,23 @@ public class Task extends Model
 	public String payment;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.EAGER)
 	public Category category;
 	
 	public void setCategoryId(String value)
 	{
-		category = null;
+		category = Categories.getCategoryById(value);
 	}
 	
 	public String getCategoryId()
 	{
-		return "TODO";
+		if (category == null)
+		{
+			return Category.NOT_SELECTED;
+		}
+		else
+		{
+			return category.categoryId;
+		}
 	}
 }
