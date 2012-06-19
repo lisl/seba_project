@@ -38,12 +38,12 @@ public class TaskController extends Controller
             render("@fillOut", categories, task);
         }
 		
-		view(task, true);
+		view(task, true, false);
 	}
 	
-	public static void view(Task task, boolean isPreview)
+	public static void view(Task task, boolean isPreview, boolean justPosted)
 	{
-		render(task, isPreview);
+		render(task, isPreview, justPosted);
 	}
 	
 	public static void save(Task task)
@@ -53,7 +53,7 @@ public class TaskController extends Controller
 		//task.category.merge();
 		task.save();
 
-		view(task, false);
+		view(task, false, true);
 	}
 	
 	public static void showAll(String selectedCategoryId)

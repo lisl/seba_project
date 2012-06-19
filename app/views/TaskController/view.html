@@ -9,11 +9,11 @@
 	Task "${task.title}"
 </h2>
 
-#{ifnot isPreview}
+#{if justPosted}
 	<div style="background-color: #A9F5A9;">
 		<b>The task has been posted successfully!</b>
 	</div>
-#{/ifnot}
+#{/if}
 
 <p>
 	Category: ${task.category?.categoryName}
