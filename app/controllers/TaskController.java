@@ -34,8 +34,6 @@ public class TaskController extends Controller
 		
 		if(validation.hasErrors())
 		{
-			task.refresh();
-			
 			List<Category> categories = Category.findAllOrdered();
             render("@fillOut", categories, task);
         }
