@@ -32,7 +32,7 @@ public class TaskController extends Controller
 	
 	public static void save(Task task)
 	{
-		JPA.em().persist(task);
+		task.save();
 
 		//redirect to this task's category
 		showAll("TODO");
