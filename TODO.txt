@@ -1,8 +1,8 @@
 TODO until presentation 3:
-- sidebar only on the page which lists the tasks
 - improve the validation of the task creation
 - write test cases
 - average amount for similar tasks
 - Facebook login
 - put the logo into the left corner?
+- Facebook like on every page??
 - ...

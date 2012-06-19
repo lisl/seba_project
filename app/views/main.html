@@ -47,30 +47,11 @@
 
     <div class="container-fluid">
       <div class="row-fluid">
-        <div class="span3">
-          <div id="task-categories" class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Categories</li>
-              <li><a href="/allTasks?categoryId=household">Household</a></li>
-              <li><a href="/allTasks?categoryId=handyman">Handyman</a></li>
-              <li><a data-toggle="collapse" data-target=".virtualAssist" href="/allTasks?categoryId=virtualAssistance">Virtual assistance</a></li>
-              <li class = "virtualAssist collapse in"><a href="/allTasks?categoryId=fixComputers" style = "margin-left: 5px;">Fix computers</a></li>
-              <li class = "virtualAssist collapse in"><a href="/allTasks?categoryId=transferLPs" style = "margin-left: 5px;">Transfer LPs</a></li>
-              <li><a href="/allTasks?categoryId=officeHelp">Office help</a></li>
-              <li><a href="/allTasks?categoryId=shopping">Shopping</a></li>
-              <li><a href="/allTasks?categoryId=delivery">Delivery</a></li>
-              
-            </ul>
-          </div><!--/.well -->
-        </div><!--/span-->
-        
-        <div class="span9">
-        	#{doLayout /}
-		</div>
+
+        #{doLayout /}
 		
       </div><!--/row-->
 
-    
 		<iframe src="https://www.facebook.com/plugins/like.php?href=http://heinzel.alperowitz.de"
         scrolling="no" frameborder="0"
         style="border:none; width:450px; height:80px"></iframe>
