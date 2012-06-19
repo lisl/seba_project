@@ -15,11 +15,13 @@ public class TaskController extends Controller
 	{
 		List<Category> categories = Category.findAllOrdered();
 		
-		if (task == null) {
+		if (task == null)
+		{
 			//new task
 			render(categories);
 		}
-		else {
+		else
+		{
 			//edit task
 			render(categories, task);
 		}
