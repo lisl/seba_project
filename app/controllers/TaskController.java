@@ -2,7 +2,7 @@ package controllers;
 
 import java.util.List;
 
-import models.Categories;
+import models.InitData;
 import models.Category;
 import models.Task;
 import play.data.validation.Error;
@@ -13,7 +13,7 @@ public class TaskController extends Controller
 {
 	public static void fillOut(Task task)
 	{
-		List<Category> categories = Categories.getCategories();
+		List<Category> categories = Category.findAllOrdered();
 		
 		if (task == null) {
 			//new task
@@ -34,7 +34,7 @@ public class TaskController extends Controller
 		
 		if(validation.hasErrors())
 		{
-			List<Category> categories = Categories.getCategories();
+			List<Category> categories = Category.findAllOrdered();
             render("@fillOut", categories, task);
         }
 		

@@ -31,7 +31,7 @@ public class Task extends Model
 	
 	public void setCategoryId(String value)
 	{
-		category = Categories.getCategoryById(value);
+		category = Category.find("byCategoryId", value).first();
 	}
 	
 	public String getCategoryId()

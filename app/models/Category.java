@@ -30,7 +30,11 @@ public class Category extends Model implements Comparable<Category>
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
 	}
-
+	
+	public static List<Category> findAllOrdered()
+	{
+		return Category.find("FROM Category AS c ORDER BY c.categoryName").fetch();
+	}
 
 	@Override
 	public int compareTo(Category c)
