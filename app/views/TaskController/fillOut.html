@@ -33,7 +33,7 @@
     #{field 'task.title'}
        
         <div class="controls">
-	      <input type="text" id="task-title" name="${field.name}" value=${task?.title}/>
+	      <input type="text" id="task-title" name="${field.name}" value="${task?.title}"/>
 	    </div>
        
         <p class="${field.errorClass}">
@@ -51,9 +51,7 @@
     #{field 'task.description'}
     
 	    <div class="controls">
-	      <textarea class="input-xlarge" id="task-description" name="${field.name}" rows="3">
-	      	${task?.description}
-	      </textarea>
+	      <textarea class="input-xlarge" id="task-description" name="${field.name}" rows="3">${task?.description}</textarea>
 	    </div>
     
     	<p class="${field.errorClass}">
