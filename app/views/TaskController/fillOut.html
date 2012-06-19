@@ -3,53 +3,112 @@
 
 <h2>Post a Task</h2>
 
-<form id="new-task" class="form-horizontal" action="@{TaskController.submit}" method="post">
-  
+#{form @submit()}
+
   <div class="control-group">
-	  <label class="control-label" for="task-categoryId">Choose a category</label>
-	  <div class="controls">
-      <select id="task-categoryId" name="task.categoryId">
-      	<option value="household">Household</option>
-      	<option value="handyman">Handyman</option>
-      </select>
-    </div>
+  
+  	<label class="control-label" for="task-categoryId">Choose a category</label>
+  	
+	#{field 'task.categoryId'}
+		
+      	<div class="controls">
+	      <select id="task-categoryId" name="${field.name}">
+	      	<option value="household">Household</option>
+	      	<option value="handyman">Handyman</option>
+	      </select>
+	    </div>
+	    
+	    <p class="${field.errorClass}">
+          <span class="error">${field.error}</span>
+      	</p>
+      	
+   	#{/field}
+
+  </div>
+
+  <div class="control-group">
+  
+	<label class="control-label" for="task-title">Give the task a name</label>
+ 
+    #{field 'task.title'}
+       
+        <div class="controls">
+	      <input type="text" id="task-title" name="${field.name}" value=${task?.title}/>
+	    </div>
+       
+        <p class="${field.errorClass}">
+            <span class="error">${field.error}</span>
+        </p>
+        
+   	#{/field}
+
   </div>
   
   <div class="control-group">
-    <label class="control-label" for="task-title">Give the task a name</label>
-    <div class="controls">
-      <input type="text" id="task-title" name="task.title" />
-    </div>
-  </div>
   
-  <div class="control-group">
     <label class="control-label" for="task-description">Describe the task</label> 
-    <div class="controls">
-      <textarea class="input-xlarge" id="task-description" name="task.description" rows="3"></textarea>
-    </div>
+    
+    #{field 'task.description'}
+    
+	    <div class="controls">
+	      <textarea class="input-xlarge" id="task-description" name="${field.name}" rows="3">
+	      	${task?.description}
+	      </textarea>
+	    </div>
+    
+    	<p class="${field.errorClass}">
+            <span class="error">${field.error}</span>
+        </p>
+        
+    #{/field}
+    
   </div>
   
   <div class="control-group">
-    <label class="control-label" for="task-location">What’s your location?</label>
-    <div class="controls">
-      <input type="text" id="task-location" name="task.location" />
-    </div>
+  
+    <label class="control-label" for="task-location">What's your location?</label>
+    
+    #{field 'task.location'}
+    
+	    <div class="controls">
+	      <input type="text" id="task-location" name="${field.name}" value="${task?.location}"/>
+	    </div>
+	    
+	    <p class="${field.errorClass}">
+            <span class="error">${field.error}</span>
+        </p>
+    
+    #{/field}
   </div>
   
   <div class="control-group">
-    <label class="control-label" for="task-payment">What’s the reward?</label>
-    <div class="controls">
-      <div class="input-prepend input-append">
-        <span class="add-on">$</span><input class="span3" id="task-payment" name="task.payment" style="text-align: right;" size="16" type="text" /><span class="add-on">.00</span>
-      </div>
-      <p class="help-block">Hint: The average amount for similar tasks was about {TODO} Euro.</p>
-    </div>
+  
+    <label class="control-label" for="task-payment">What's the reward?</label>
+    
+    #{field 'task.payment'}
+    
+	    <div class="controls">
+	      <div class="input-prepend input-append">
+	        <span class="add-on">$</span>
+	        <input class="span3" id="task-payment" name="${field.name}" style="text-align: right;" size="16" type="text" value="${task?.payment}"/>
+	        <span class="add-on">.00</span>
+	      </div>
+	      <p class="help-block">Hint: The average amount for similar tasks was about {TODO} Euro.</p>
+	    </div>
+	    
+	    <p class="${field.errorClass}">
+            <span class="error">${field.error}</span>
+        </p>
+    
+    #{/field}
+    
   </div>
   
   <div class="control-group">
     <div class="controls">
       <input type="submit" class="btn btn-primary" value="Preview your task" />
+      <a href="@{Application.index()}">Cancel</a>
     </div>
   </div>
   
-</form> 
+#{/form}
