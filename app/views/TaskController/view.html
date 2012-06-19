@@ -1,35 +1,28 @@
 #{extends 'main.html' /} 
 #{set title:'Task Preview' /}
 
-<h2>Preview of Task "${task.title}"</h2>
+<h2>
+	#{if isPreview}
+    	Preview of 
+	#{/if}
+	
+	Task "${task.title}"
+</h2>
 
 <p>
-	Category: ${task.categoryId}<br />
-	Title: ${task.title}<br />
-	Description: ${task.description}<br />
-	Location: ${task.location}<br />
+	Category: ${task.categoryId}
+	<br />
+	Title: ${task.title}
+	<br />
+	Description: ${task.description}
+	<br />
+	Location: ${task.location}
+	<br />
 	Reward: ${task.payment}
 </p>
 
 #{if isPreview}
-    <form id="edit-task" action="@{TaskController.fillOut}" method="GET">
-	    <input type="hidden" name="task.categoryId" />
-	    <input type="hidden" name="task.title" />
-	    <input type="hidden" name="task.description" />
-	    <input type="hidden" name="task.location" />
-	    <input type="hidden" name="task.payment" />
-	    
-		<input class="btn" type="submit" value="Go back to edit" />
-	</form>
-	
-	<form id="post-task" action="@{TaskController.save}" method="POST">
-    <input type="hidden" name="task.categoryId" />
-    <input type="hidden" name="task.title" />
-    <input type="hidden" name="task.description" />
-    <input type="hidden" name="task.location" />
-    <input type="hidden" name="task.payment" />
-    
-	<input class="btn btn-success" type="submit" value="Post the task!" />
-	</form>
+    <a href="@{save(task)}">Post!</a>
+    <a href="@{fillOut(task)}">Edit</a>
 #{/if}
 
