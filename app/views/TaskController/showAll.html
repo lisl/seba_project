@@ -2,57 +2,43 @@
 #{set title:'All Tasks' /}
 
 <div class="span3">
-  <div id="task-categories" class="well sidebar-nav">
-    <ul class="nav nav-list">
-      <li class="nav-header">Categories</li>
-      
-      #{list allCategories, as:'c'}
-      	<li>
-      	
-      		#{if selectedCategoryId == c.categoryId}
-      			<b>
-      		#{/if}
-      		
-      		<a href="/allTasks?categoryId=${c.categoryId}">${c.categoryName}</a>
-      		
-      		#{if selectedCategoryId.equals(c.categoryId)}
-      			</b>
-      		#{/if}
-      		
-      	</li>
-	  #{/list}
-      
-    </ul>
-  </div><!--/.well -->
-</div><!--/span-->
+	<div id="task-categories" class="well sidebar-nav">
+		<ul class="nav nav-list">
+			<li class="nav-header">Categories</li>
+			<li #{if selectedCategoryId == 'allCategories'}class="active"#{/if}>
+				<a href="/allTasks?selectedCategoryId=allCategories">All Categories</a>
+			</li>
+			#{list allCategories, as:'c'}
+			<li #{if selectedCategoryId == c.categoryId}class="active"#{/if}>
+	  			<a href="/allTasks?selectedCategoryId=${c.categoryId}">${c.categoryName}</a>
+	  		</li>
+	  		#{/list}
+		</ul>
+	</div>
+</div>
 
 <div class="span9">
 
+	#{if tasksOfCurrentCategory.isEmpty()}
+	<div class="hero-unit">
+		<strong>There are no tasks here yet.</strong> Feel free to <a href="/postATask">post a new task.</a>
+	</div>
+	#{/if}
+	#{else}
 	<ul class="task-list">
-		
-		#{if tasksOfCurrentCategory.isEmpty()}
-			<div>
-				No tasks exist in this category.
-			</div>
-		#{/if}
-		#{else}
-		
-			#{list tasksOfCurrentCategory, as:'t'}
-			
-			    <a href="@{view(t, false, false)}">
-					<li class="task">
-						<h3 class="task-title">
-							${t.title}
-							<span class="task-price">${t.payment} $</span>
-						</h3>
-						<p class="task-location">${t.location}</p>
-						<p class="task-description">${t.description}</p>
-					</li>
-				</a>
-				
-			#{/list}
-		#{/else}
-		
+		#{list tasksOfCurrentCategory, as:'t'}	
+		<a href="@{view(t, false, false)}">
+			<li class="task">
+				<h3 class="task-title">
+					${t.title}
+					<span class="task-price">${t.payment}&nbsp;€</span>
+				</h3>
+				<p class="task-location">${t.location}</p>
+				<p class="task-description">${t.description}</p>
+			</li>
+		</a>	
+		#{/list}
 	</ul>
+	#{/else}
 
 </div>
