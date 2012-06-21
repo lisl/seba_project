@@ -9,6 +9,10 @@ body {
   }
 }
 
+.brand {
+  font-family: "Lobster", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
 .navbar .fb-login-button {
   line-height: 28px;
   margin-left: .5em;
