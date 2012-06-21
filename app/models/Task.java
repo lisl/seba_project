@@ -5,6 +5,7 @@ import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
 import play.data.validation.IsTrue;
+import play.data.validation.Match;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -17,12 +18,15 @@ public class Task extends Model
 	public String title;
 	
 	@Required
+	@MinSize(10)
 	public String description;
 	
 	@Required
+	@MinSize(4)
 	public String location;
 	
 	@Required
+	@Match(value = "(\\d)+((,|\\.)(\\d){1,2}){0,1}", message = "Numeric value required")
 	public String payment;
 	
 	
