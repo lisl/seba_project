@@ -1,38 +1,41 @@
 #{extends 'main.html' /} 
 #{set title:'Task Preview' /}
 
-<h2>
-	#{if isPreview}
-    	Preview of 
-	#{/if}
-	
-	Task "${task.title}"
-</h2>
+<h2 class="task-heading">${task.title} #{if isPreview}<span class="label label-warning">Preview</span>#{/if}</h2>
 
 #{if justPosted}
-	<div style="background-color: #A9F5A9;">
-		<b>The task has been posted successfully!</b>
-	</div>
+<div class="alert alert-success">
+	<button class="close" data-dismiss="alert">×</button>
+	Your task has been posted successfully!
+</div>
 #{/if}
 
-<p>
-	Category: ${task.category?.categoryName}
-	<br />
-	Title: ${task.title}
-	<br />
-	Description: ${task.description}
-	<br />
-	Location: ${task.location}
-	<br />
-	Reward: ${task.payment} $
-</p>
+<table class="table table-task-details">
+	<tr>
+		<th scope="row">Category</th>
+		<td>${task.category?.categoryName}</td>
+	</tr>
+	<tr>
+		<th scope="row">Description</th>
+		<td>${task.description}</td>
+	</tr>
+	<tr>
+		<th scope="row">Location</th>
+		<td>${task.location}</td>
+	</tr>
+	<tr>
+		<th scope="row">Reward</th>
+		<td>${task.payment}&nbsp;€</td>
+	</tr>
+</table>
 
-#{if isPreview}
-    <a href="@{save(task)}">Post!</a>
-    <a href="@{fillOut(task)}">Edit</a>
-#{/if}
-#{else}
-    <a href="@{fillOut}">Post another task</a>
-    <a href="@{Application.index}">Back to the main page</a>
-#{/else}
-
+<div class="form-actions">
+	#{if isPreview}
+	<a class="btn btn-success" href="@{save(task)}">Post this task!</a>
+	<a class="btn" href="@{fillOut(task)}">Edit</a>
+	#{/if}
+	#{else}
+	<a class="btn" href="@{fillOut}">Post another task</a>
+	<a class="btn" href="@{Application.index}">View all tasks</a>
+	#{/else}
+</div>

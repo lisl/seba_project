@@ -45,8 +45,17 @@ body {
   float: right;
 }
 
-/* PREVIEW TASK */
-#edit-task {
-  float: left;
-  margin-right: 1em;
+/* (PRE)VIEW TASK */
+
+.task-heading .label {
+  vertical-align: text-top;
+}
+
+.table-task-details tr:first-child th,
+.table-task-details tr:first-child td {
+  border-top: 0;
+}
+
+.table-task-details th {
+  width: 20%;
 }
