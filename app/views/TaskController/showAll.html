@@ -2,57 +2,48 @@
 #{set title:'All Tasks' /}
 
 <div class="span3">
-  <div id="task-categories" class="well sidebar-nav">
-    <ul class="nav nav-list">
-      <li class="nav-header">Categories</li>
-      
-      #{list allCategories, as:'c'}
-      	<li>
-      	
-      		#{if selectedCategoryId == c.categoryId}
-      			<b>
-      		#{/if}
-      		
-      		<a href="@{showAll(c.categoryId)}">${c.categoryName}</a>
-      		
-      		#{if selectedCategoryId.equals(c.categoryId)}
-      			</b>
-      		#{/if}
-      		
-      	</li>
-	  #{/list}
-      
-    </ul>
-  </div><!--/.well -->
-</div><!--/span-->
+	<div id="task-categories" class="well sidebar-nav">
+		<ul class="nav nav-list">
+			<li class="nav-header">Tasks by Category</li>
+			<li #{if selectedCategoryId == 'allCategories'}class="active"#{/if}>
+				<a href="/allTasks?selectedCategoryId=allCategories">All Categories</a>
+			</li>
+			#{list allCategories, as:'c'}
+			<li #{if selectedCategoryId == c.categoryId}class="active"#{/if}>
+	  			<a href="/allTasks?selectedCategoryId=${c.categoryId}">${c.categoryName}</a>
+	  		</li>
+	  		#{/list}
+		</ul>
+	</div>
+</div>
 
 <div class="span9">
 
+	#{if tasksOfCurrentCategory.isEmpty()}
+	<div class="hero-unit">
+		<h2>There are no tasks here yet.</h2>
+		<p>
+			No one has created a task in this category, yet.<br />
+			Go ahead, be the first one!
+			<a class="pull-right btn btn-primary" href="/postATask"><i class="icon-plus-sign icon-white"></i> Post a new task</a>
+		</p>
+	</div>
+	#{/if}
+	#{else}
 	<ul class="task-list">
-		
-		#{if tasksOfCurrentCategory.isEmpty()}
-			<div>
-				No tasks exist in this category.
-			</div>
-		#{/if}
-		#{else}
-		
-			#{list tasksOfCurrentCategory, as:'t'}
-			
-			    <a href="@{view(t, false, false)}">
-					<li class="task">
-						<h3 class="task-title">
-							${t.title}
-							<span class="task-price">${t.payment} $</span>
-						</h3>
-						<p class="task-location">${t.location}</p>
-						<p class="task-description">${t.description}</p>
-					</li>
-				</a>
-				
-			#{/list}
-		#{/else}
-		
+		#{list tasksOfCurrentCategory, as:'t'}	
+		<a href="@{view(t, false, false)}">
+			<li class="task">
+				<h3 class="task-title">
+					${t.title}
+					<span class="task-price badge">${t.payment}&nbsp;€</span>
+				</h3>
+				<p class="task-location"><i class="icon-map-marker"></i> ${t.location}</p>
+				<p class="task-description">${t.description}</p>
+			</li>
+		</a>	
+		#{/list}
 	</ul>
+	#{/else}
 
 </div>

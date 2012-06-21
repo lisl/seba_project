@@ -9,6 +9,21 @@ body {
   }
 }
 
+.brand {
+  font-family: "Lobster", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.navbar .fb-login-button {
+  line-height: 28px;
+  margin-left: .5em;
+}
+
+#footer {
+  margin-top: 45px;
+  padding: 35px 0 36px;
+  border-top: 1px solid #e5e5e5;
+}
+
 /* TASK LIST */
 
 #task-categories {
@@ -28,10 +43,16 @@ body {
 .task {
   padding: 1em;
   margin: 0 0 1em;
-  background: #eee;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.task-title {
+  font-weight: normal;
 }
 
 .task-location,
@@ -40,13 +61,42 @@ body {
   margin: 0;
 }
 
+.task-price {
+  background-color: #0088cc;
+}
+
 .task-price,
 .task-location {
   float: right;
 }
 
-/* PREVIEW TASK */
-#edit-task {
-  float: left;
-  margin-right: 1em;
+/* CREATE TASK */
+
+@media (max-width: 767px) {
+  .form-new-task .input-append {
+    width: 100%;
+  }
+  
+  .form-new-task .input-append .input-xlarge {
+    width: 90%;
+  }
+}
+
+/* (PRE)VIEW TASK */
+
+.task-heading {
+  margin-bottom: .5em;
+}
+
+.task-heading .label {
+  vertical-align: text-top;
+}
+
+.table-task-details tr:first-child th,
+.table-task-details tr:first-child td {
+  border-top: 0;
+}
+
+.table-task-details th {
+  width: 10em;
 }
