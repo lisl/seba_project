@@ -49,9 +49,9 @@
 	</div>
 	#{/field}
 	
+	#{field 'task.location'}
 	<div class="control-group #{if field.error}error#{/if}">
-		#{field 'task.location'}
-	
+		
 		<label class="control-label" for="${field.id}">Where is the task located?</label>
 	
 		<div class="controls">
@@ -59,8 +59,8 @@
 			<span class="help-inline">${field.error}</span>
 		</div>
 		 
-		#{/field}
 	</div>
+	#{/field}
 	
 	#{field 'task.payment'}
 	<div class="control-group #{if field.error}error#{/if}">
