@@ -3,115 +3,83 @@
 
 <h2>Post a Task</h2>
 
-#{form @submit()}
-
-  <div class="control-group">
-  
-  	<label class="control-label" for="task-categoryId">Choose a category</label>
-  	
+#{form @submit(), class:'form-horizontal'}
+	
 	#{field 'task.categoryId'}
+	<div class="control-group #{if field.error}error#{/if}">
 		
-      	<div class="controls">
-	      <select id="task-categoryId" name="${field.name}">
-	      
-	      	<option value="notSelected">Please select</option>
-	      
-		    #{list categories, as:'c'}
-	    		<option value="${c.categoryId}" #{if (c.categoryId == task.categoryId)} selected="selected" #{/if}>${c.categoryName}</option>
-			#{/list}
-	      	
-	      </select>
-	    </div>
-	    
-	    <p class="${field.errorClass}">
-          <span class="error">${field.error}</span>
-      	</p>
-      	
-   	#{/field}
-
-  </div>
-
-  <div class="control-group">
-  
-	<label class="control-label" for="task-title">Give the task a name</label>
- 
-    #{field 'task.title'}
-       
-        <div class="controls">
-	      <input type="text" id="task-title" name="${field.name}" value="${task?.title}"/>
-	    </div>
-       
-        <p class="${field.errorClass}">
-            <span class="error">${field.error}</span>
-        </p>
-        
-   	#{/field}
-
-  </div>
-  
-  <div class="control-group">
-  
-    <label class="control-label" for="task-description">Describe the task</label> 
-    
-    #{field 'task.description'}
-    
-	    <div class="controls">
-	      <textarea class="input-xlarge" id="task-description" name="${field.name}" rows="3">${task?.description}</textarea>
-	    </div>
-    
-    	<p class="${field.errorClass}">
-            <span class="error">${field.error}</span>
-        </p>
-        
-    #{/field}
-    
-  </div>
-  
-  <div class="control-group">
-  
-    <label class="control-label" for="task-location">What's your location?</label>
-    
-    #{field 'task.location'}
-    
-	    <div class="controls">
-	      <input type="text" id="task-location" name="${field.name}" value="${task?.location}"/>
-	    </div>
-	    
-	    <p class="${field.errorClass}">
-            <span class="error">${field.error}</span>
-        </p>
-    
-    #{/field}
-  </div>
-  
-  <div class="control-group">
-  
-    <label class="control-label" for="task-payment">What's the reward?</label>
-    
-    #{field 'task.payment'}
-    
-	    <div class="controls">
-	      <div class="input-prepend input-append">
-	        <span class="add-on">$</span>
-	        <input class="span3" id="task-payment" name="${field.name}" style="text-align: right;" size="16" type="text" value="${task?.payment}"/>
-	        <span class="add-on">.00</span>
-	      </div>
-	      <p class="help-block">Hint: The average amount for similar tasks was about {TODO} Euro.</p>
-	    </div>
-	    
-	    <p class="${field.errorClass}">
-            <span class="error">${field.error}</span>
-        </p>
-    
-    #{/field}
-    
-  </div>
-  
-  <div class="control-group">
-    <div class="controls">
-      <input type="submit" class="btn btn-primary" value="Preview your task" />
-      <a href="@{Application.index()}">Cancel</a>
-    </div>
-  </div>
-  
+		<label class="control-label" for="${field.id}">Choose a category</label>
+		
+		<div class="controls">
+			<select id="${field.id}" name="${field.name}">
+				<option value="notSelected">Please select</option>
+				#{list categories, as:'c'}
+					<option value="${c.categoryId}" #{if c.categoryId == task.categoryId}selected="selected" #{/if}>${c.categoryName}</option>
+				#{/list}
+			</select>
+			<span class="help-inline">${field.error}</span>
+		</div>
+		 	
+	</div>
+	#{/field}
+	
+	#{field 'task.title'}
+	<div class="control-group #{if field.error}error#{/if}">
+		
+		<label class="control-label" for="${field.id}">Give the task a name</label>
+		
+		<div class="controls">
+			<input type="text" id="${field.id}" name="${field.name}" value="${task?.title}"/>
+			<span class="help-inline">${field.error}</span>
+		</div>
+		
+	</div>
+	#{/field}
+	
+	#{field 'task.description'}
+	<div class="control-group #{if field.error}error#{/if}">
+		
+		<label class="control-label" for="${field.id}">Describe the task</label> 
+		
+		<div class="controls">
+			<textarea class="input-xlarge" id="${field.id}" name="${field.name}" rows="3">${task?.description}</textarea>
+			<span class="help-inline">${field.error}</span>
+		</div>
+		
+	</div>
+	#{/field}
+	
+	<div class="control-group #{if field.error}error#{/if}">
+		#{field 'task.location'}
+	
+		<label class="control-label" for="${field.id}">Where is the task located?</label>
+	
+		<div class="controls">
+			<input type="text" id="${field.id}" name="${field.name}" value="${task?.location}"/>
+			<span class="help-inline">${field.error}</span>
+		</div>
+		 
+		#{/field}
+	</div>
+	
+	#{field 'task.payment'}
+	<div class="control-group #{if field.error}error#{/if}">
+		
+		<label class="control-label" for="${field.id}">What's the reward?</label>
+		
+		<div class="controls">
+			<div class="input-append">
+				<input class="span6" id="task-payment" name="${field.name}" style="text-align: right;" size="16" type="text" value="${task?.payment}"/><span class="add-on">€</span>
+				<span class="help-inline">${field.error}</span>
+			</div>
+		</div>
+		
+	</div>
+	#{/field}
+	
+	<div class="form-actions">
+		<input type="submit" class="btn btn-primary" value="Preview your task" />
+		<a class="btn" href="@{Application.index()}">Cancel</a>
+	</div>
+	
 #{/form}
