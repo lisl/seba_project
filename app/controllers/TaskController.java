@@ -2,10 +2,8 @@ package controllers;
 
 import java.util.List;
 
-import models.InitData;
 import models.Category;
 import models.Task;
-import play.data.validation.Error;
 import play.data.validation.Valid;
 import play.mvc.Controller;
 
