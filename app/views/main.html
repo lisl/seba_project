@@ -14,7 +14,17 @@
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
    </head>
   <body>
-    
+  <!-- Facebook Login -->
+	
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=285484724882779";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+     
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -28,8 +38,9 @@
           <a class="brand" href="/">Heinzelmännchen</a>
           
           <div class="btn-group pull-right">
-            <div id="fb-root"></div>
-            <div class="fb-login-button">Login with Facebook</div>
+				<!-- Todo: Make Buttons modal -->
+				<a href="@{UserController.auth()}" class="btn btn-primary"><i class=" icon-ok-circle icon-white"></i> Login</a>
+				<a href="/" onclick="FB.logout();" class="btn btn-primary"><i class=" icon-ban-circle icon-white"></i> Logout</a>
           </div>
           
           <div class="btn-group pull-right">
@@ -55,8 +66,8 @@
       </div>
       
       <footer id="footer">
-        <p class="pull-right">
-          <iframe src="https://www.facebook.com/plugins/like.php?href=http://heinzel.alperowitz.de" scrolling="no" frameborder="0" style="border:none; width:450px; height:80px"></iframe>
+        <p class="pull-left">
+         <div class="fb-like" data-href="http://localhost" data-send="true" data-width="450" data-show-faces="false"></div>
         </p>
       </footer>
       
@@ -66,24 +77,4 @@
     <script>window.jQuery || document.write('<script src="/public/javascripts/jquery-1.7.2.min.js"><\/script>')</script>
     <script src="/public/javascripts/bootstrap.js"></script>
     
-    <!-- Facebook Login -->
-    <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '285484724882779',
-            status     : true, 
-            cookie     : true,
-            xfbml      : true,
-            oauth      : true,
-          });
-    };
-
-        (function(d){
-           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-           js = d.createElement('script'); js.id = id; js.async = true;
-           js.src = "//connect.facebook.net/en_US/all.js";
-           d.getElementsByTagName('head')[0].appendChild(js);
-         }(document));
-     </script>
-
 </body></html>
