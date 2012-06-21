@@ -31,7 +31,7 @@ public class TaskController extends Controller
 	{
 		if (task.category == null)
 		{
-			//validation.errors().add(new Error("no-category", "No category selected", new String[]{}));
+			validation.addError("task.categoryId", "Choose a category");
 		}
 		
 		if(validation.hasErrors())
@@ -48,7 +48,7 @@ public class TaskController extends Controller
 		render(task, isPreview, justPosted);
 	}
 	
-	public static void save(Task task)
+	public static void save(@Valid Task task)
 	{
 		//TODO: BUG 43897498754789
 		task.category.save();
