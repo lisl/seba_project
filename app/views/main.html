@@ -35,17 +35,17 @@
 
           <div class="nav-collapse">
             <ul class="nav">
-              <li class="active"><a href="/">Tasks</a></li>
-              <li><a href="/about">About</a></li>
-              <li><a href="/contactUs">Contact</a></li>
+              <li #{if request.path=='/allTasks'}class="active"#{/if}><a href="/allTasks">Tasks</a></li>
+              <li #{if request.path=='/about'}class="active"#{/if}><a href="/about">About</a></li>
+              <li #{if request.path=='/contactUs'}class="active"#{/if}><a href="/contactUs">Contact</a></li>
             </ul>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="container">
-      <div class="row">
+    <div class="container-fluid">
+      <div class="row-fluid">
         #{doLayout /}
       </div>
       <footer id="footer">
