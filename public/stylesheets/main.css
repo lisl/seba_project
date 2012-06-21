@@ -34,10 +34,16 @@ body {
 .task {
   padding: 1em;
   margin: 0 0 1em;
-  background: #eee;
-  -webkit-border-radius: 6px;
-  -moz-border-radius: 6px;
-  border-radius: 6px;
+  background-color: #f5f5f5;
+  border: 1px solid #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+
+.task-title {
+  font-weight: normal;
 }
 
 .task-location,
@@ -46,12 +52,32 @@ body {
   margin: 0;
 }
 
+.task-price {
+  background-color: #0088cc;
+}
+
 .task-price,
 .task-location {
   float: right;
 }
 
+/* CREATE TASK */
+
+@media (max-width: 767px) {
+  .form-new-task .input-append {
+    width: 100%;
+  }
+  
+  .form-new-task .input-append .input-xlarge {
+    width: 90%;
+  }
+}
+
 /* (PRE)VIEW TASK */
+
+.task-heading {
+  margin-bottom: .5em;
+}
 
 .task-heading .label {
   vertical-align: text-top;
@@ -63,5 +89,5 @@ body {
 }
 
 .table-task-details th {
-  width: 20%;
+  width: 10em;
 }

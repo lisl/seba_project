@@ -3,7 +3,7 @@
 
 <h2>Post a Task</h2>
 
-#{form @submit(), class:'form-horizontal'}
+#{form @submit(), class: 'form-new-task form-horizontal'}
 	
 	#{field 'task.categoryId'}
 	<div class="control-group #{if field.error}error#{/if}">
@@ -11,7 +11,7 @@
 		<label class="control-label" for="${field.id}">Choose a category</label>
 		
 		<div class="controls">
-			<select id="${field.id}" name="${field.name}">
+			<select class="input-xlarge" id="${field.id}" name="${field.name}">
 				<option value="notSelected">Please select</option>
 				#{list categories, as:'c'}
 					<option value="${c.categoryId}" #{if c.categoryId == task.categoryId}selected="selected" #{/if}>${c.categoryName}</option>
@@ -29,7 +29,7 @@
 		<label class="control-label" for="${field.id}">Give the task a name</label>
 		
 		<div class="controls">
-			<input type="text" id="${field.id}" name="${field.name}" value="${task?.title}"/>
+			<input type="text" class="input-xlarge" id="${field.id}" name="${field.name}" value="${task?.title}"/>
 			<span class="help-inline">${field.error}</span>
 		</div>
 		
@@ -55,7 +55,7 @@
 		<label class="control-label" for="${field.id}">Where is the task located?</label>
 	
 		<div class="controls">
-			<input type="text" id="${field.id}" name="${field.name}" value="${task?.location}"/>
+			<input type="text" class="input-xlarge" id="${field.id}" name="${field.name}" value="${task?.location}"/>
 			<span class="help-inline">${field.error}</span>
 		</div>
 		 
@@ -69,16 +69,16 @@
 		
 		<div class="controls">
 			<div class="input-append">
-				<input class="span6" id="task-payment" name="${field.name}" style="text-align: right;" size="16" type="text" value="${task?.payment}"/><span class="add-on">€</span>
-				<span class="help-inline">${field.error}</span>
+				<input type="text" class="input-xlarge" id="task-payment" name="${field.name}" style="text-align: right;" value="${task?.payment}"/><span class="add-on">€</span>
 			</div>
+			<span class="help-inline">${field.error}</span>
 		</div>
 		
 	</div>
 	#{/field}
 	
 	<div class="form-actions">
-		<input type="submit" class="btn btn-primary" value="Preview your task" />
+		<button type="submit" class="btn btn-primary"><i class="icon-eye-open icon-white"></i> Preview your task</button>
 		<a class="btn" href="@{Application.index()}">Cancel</a>
 	</div>
 	

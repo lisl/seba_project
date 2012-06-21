@@ -4,7 +4,7 @@
 <div class="span3">
 	<div id="task-categories" class="well sidebar-nav">
 		<ul class="nav nav-list">
-			<li class="nav-header">Categories</li>
+			<li class="nav-header">Tasks by Category</li>
 			<li #{if selectedCategoryId == 'allCategories'}class="active"#{/if}>
 				<a href="/allTasks?selectedCategoryId=allCategories">All Categories</a>
 			</li>
@@ -21,7 +21,12 @@
 
 	#{if tasksOfCurrentCategory.isEmpty()}
 	<div class="hero-unit">
-		<strong>There are no tasks here yet.</strong> Feel free to <a href="/postATask">post a new task.</a>
+		<h2>There are no tasks here yet.</h2>
+		<p>
+			No one has created a task in this category, yet.<br />
+			Go ahead, be the first one!
+			<a class="pull-right btn btn-primary" href="/postATask"><i class="icon-plus-sign icon-white"></i> Post a new task</a>
+		</p>
 	</div>
 	#{/if}
 	#{else}
@@ -31,9 +36,9 @@
 			<li class="task">
 				<h3 class="task-title">
 					${t.title}
-					<span class="task-price">${t.payment}&nbsp;€</span>
+					<span class="task-price badge">${t.payment}&nbsp;€</span>
 				</h3>
-				<p class="task-location">${t.location}</p>
+				<p class="task-location"><i class="icon-map-marker"></i> ${t.location}</p>
 				<p class="task-description">${t.description}</p>
 			</li>
 		</a>	

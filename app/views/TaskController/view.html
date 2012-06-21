@@ -12,30 +12,30 @@
 
 <table class="table table-task-details">
 	<tr>
-		<th scope="row">Category</th>
+		<th scope="row"><i class="icon-tags"></i> Category</th>
 		<td>${task.category?.categoryName}</td>
 	</tr>
 	<tr>
-		<th scope="row">Description</th>
+		<th scope="row"><i class="icon-comment"></i> Description</th>
 		<td>${task.description}</td>
 	</tr>
 	<tr>
-		<th scope="row">Location</th>
+		<th scope="row"><i class="icon-map-marker"></i> Location</th>
 		<td>${task.location}</td>
 	</tr>
 	<tr>
-		<th scope="row">Reward</th>
+		<th scope="row"><i class="icon-gift"></i> Reward</th>
 		<td>${task.payment}&nbsp;€</td>
 	</tr>
 </table>
 
 <div class="form-actions">
 	#{if isPreview}
-	<a class="btn btn-success" href="@{save(task)}">Post this task!</a>
+	<a class="btn btn-success" href="@{save(task)}"><i class="icon-ok-sign icon-white"></i> Post this task</a>
 	<a class="btn" href="@{fillOut(task)}">Edit</a>
 	#{/if}
 	#{else}
-	<a class="btn" href="@{fillOut}">Post another task</a>
-	<a class="btn" href="@{Application.index}">View all tasks</a>
+	<a class="btn" href="@{fillOut}"><i class="icon-plus-sign"></i> Post another task</a>
+	<a class="btn" href="@{Application.index}"><i class="icon-th-list"></i> View all tasks</a>
 	#{/else}
 </div>
