@@ -9,6 +9,11 @@ body {
   }
 }
 
+.navbar .fb-login-button {
+  line-height: 28px;
+  margin-left: .5em;
+}
+
 #footer {
   margin-top: 45px;
   padding: 35px 0 36px;
