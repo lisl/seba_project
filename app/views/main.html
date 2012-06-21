@@ -38,7 +38,15 @@
           <a class="brand" href="/">Heinzelmännchen</a>
           
           <div class="btn-group pull-right">
-				<!-- Todo: Make Buttons modal -->
+		  
+		  		<!-- Modal Login Button: Not working, can't get the status (UserController...)
+				#{if me}
+					<a href="/" onclick="FB.logout();" class="btn btn-primary"><i class=" icon-ban-circle icon-white"></i> Logout</a>
+				#{/if}
+				#{else}
+					<a href="@{UserController.auth()}" class="btn btn-primary"><i class=" icon-ok-circle icon-white"></i> Login</a>
+				#{/else}-->
+				
 				<a href="@{UserController.auth()}" class="btn btn-primary"><i class=" icon-ok-circle icon-white"></i> Login</a>
 				<a href="/" onclick="FB.logout();" class="btn btn-primary"><i class=" icon-ban-circle icon-white"></i> Logout</a>
           </div>
