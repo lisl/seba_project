@@ -6,11 +6,11 @@
 		<ul class="nav nav-list">
 			<li class="nav-header">Tasks by Category</li>
 			<li #{if selectedCategoryId == 'allCategories'}class="active"#{/if}>
-				<a href="/allTasks?selectedCategoryId=allCategories">All Categories</a>
+				<a href="@{showAll('allCategories')}">All Categories</a>
 			</li>
 			#{list allCategories, as:'c'}
 			<li #{if selectedCategoryId == c.categoryId}class="active"#{/if}>
-	  			<a href="/allTasks?selectedCategoryId=${c.categoryId}">${c.categoryName}</a>
+	  			<a href="@{showAll(c.categoryId)}">${c.categoryName}</a>
 	  		</li>
 	  		#{/list}
 		</ul>
