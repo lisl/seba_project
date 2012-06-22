@@ -17,15 +17,15 @@ import util.Utilities;
 public class Task extends Model
 {	
 	@Required
-	@MinSize(5)
+	@MinSize(value = 10, message = "At least 10 characters required")
 	public String title;
 	
 	@Required
-	@MinSize(10)
+	@MinSize(value = 10, message = "Please enter a significant amount of text")
 	public String description;
 	
 	@Required
-	@MinSize(4)
+	@MinSize(value = 4, message = "At least 4 characters required")
 	public String location;
 	
 	@Required
