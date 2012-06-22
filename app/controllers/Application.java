@@ -1,13 +1,13 @@
 package controllers;
 
+import models.Category;
 import play.mvc.Controller;
 
 public class Application extends Controller
 {
 	public static void index()
 	{
-		//redirect
-		TaskController.showAll("allCategories");
+		TaskController.showAll(Category.NOT_SELECTED);
 	}
 	
 	public static void about()
