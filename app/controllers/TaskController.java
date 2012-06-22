@@ -69,6 +69,12 @@ public class TaskController extends Controller
 		render(task, task.category, false, justPosted);
 	}
 	
+	public static void viewExistingById(long taskId, boolean justPosted)
+	{
+		Task task = Task.findById(taskId);
+		viewExisting(task, justPosted);
+	}
+	
 	public static void view(Task task, Category category, boolean isPreview, boolean justPosted)
 	{
 		render(task, category, isPreview, justPosted);

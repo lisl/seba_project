@@ -32,7 +32,7 @@
 	#{else}
 	<ul class="task-list">
 		#{list tasksOfCurrentCategory, as:'t'}	
-		<a href="@{viewExisting(t, false)}">
+		<a href="/viewTask?taskId=${t.id}&justPosted=false">
 			<li class="task">
 				<h3 class="task-title">
 					${t.title}
