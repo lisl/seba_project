@@ -3,7 +3,7 @@ package util;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Utilities
+public final class Utilities
 {
 	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("dd.MM.yyyy");
 	
