@@ -14,7 +14,7 @@ import play.db.jpa.Model;
 import util.Utilities;
 
 @Entity
-public class Task extends Model
+public class Task extends Model implements Comparable<Task>
 {	
 	@Required
 	@MinSize(value = 10, message = "At least 10 characters required")
@@ -63,5 +63,11 @@ public class Task extends Model
 	public String getCreationDateAsString()
 	{
 		return Utilities.formatDate(creationDate);
+	}
+
+	@Override
+	public int compareTo(Task o)
+	{
+		return this.creationDate.compareTo(o.creationDate);
 	}
 }
