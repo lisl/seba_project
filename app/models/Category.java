@@ -35,6 +35,11 @@ public class Category extends Model implements Comparable<Category>
 	{
 		return Category.find("FROM Category AS c ORDER BY c.categoryName").fetch();
 	}
+	
+	public static Category getByCategoryId(String selectedCategoryId)
+	{
+		return Category.find("FROM Category AS c WHERE c.categoryId = ?", selectedCategoryId).first();
+	}
 
 	@Override
 	public int compareTo(Category c)
