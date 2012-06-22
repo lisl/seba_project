@@ -66,7 +66,7 @@ public class TaskController extends Controller
 	
 	public static void viewExisting(Task task, boolean justPosted)
 	{
-		render(task, task.category, false, justPosted);
+		view(task, task.category, false, justPosted);
 	}
 	
 	public static void viewExistingById(long taskId, boolean justPosted)
