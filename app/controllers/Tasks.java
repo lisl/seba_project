@@ -1,5 +1,6 @@
 package controllers;
 
-public class Tasks extends CRUD {
+public class Tasks extends CRUD
+{
 
 }

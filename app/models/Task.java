@@ -60,7 +60,8 @@ public class Task extends Model
 		}
 	}
 	
-	public String getCreationDateAsString() {
+	public String getCreationDateAsString()
+	{
 		return Utilities.formatDate(creationDate);
 	}
 }
