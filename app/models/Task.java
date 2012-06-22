@@ -1,18 +1,21 @@
 package models;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 
-import play.data.validation.IsTrue;
+import play.data.binding.As;
 import play.data.validation.Match;
 import play.data.validation.MinSize;
 import play.data.validation.Required;
 import play.db.jpa.Model;
+import util.Utilities;
 
 @Entity
 public class Task extends Model
-{
+{	
 	@Required
 	@MinSize(5)
 	public String title;
@@ -29,9 +32,16 @@ public class Task extends Model
 	@Match(value = "(\\d)+((,|\\.)(\\d){1,2}){0,1}", message = "Numeric value required")
 	public String payment;
 	
+	@Required @As("dd.MM.yyyy")
+	public Date creationDate;
 	
-	@ManyToOne(fetch=FetchType.EAGER)
+	@ManyToOne
 	public Category category;
+	
+	public Task()
+	{
+		this.creationDate = new Date();
+	}
 	
 	public void setCategoryId(String value)
 	{
@@ -48,5 +58,9 @@ public class Task extends Model
 		{
 			return category.categoryId;
 		}
+	}
+	
+	public String getCreationDateAsString() {
+		return Utilities.formatDate(creationDate);
 	}
 }

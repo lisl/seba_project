@@ -27,6 +27,13 @@
 		<th scope="row"><i class="icon-gift"></i> Reward</th>
 		<td>${task.payment}&nbsp;€</td>
 	</tr>
+	
+	#{ifnot isPreview}
+	<tr>
+		<th scope="row"><i class="icon-map-marker"></i> Posted at</th>
+		<td>${task.creationDateAsString}</td>
+	</tr>
+	#{/ifnot}
 </table>
 
 <div class="form-actions">
