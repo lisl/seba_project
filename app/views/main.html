@@ -14,7 +14,7 @@
     <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
    </head>
   <body>
-    
+     
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
@@ -27,20 +27,34 @@
           
           <a class="brand" href="/">Heinzelmännchen</a>
           
-          <div class="btn-group pull-right">
-            <div id="fb-root"></div>
-            <div class="fb-login-button">Login with Facebook</div>
-          </div>
-          
-          <div class="btn-group pull-right">
-            <a href="/postATask" class="btn btn-success"><i class="icon-plus-sign icon-white"></i> Post a task</a>
-          </div>
-          
           <div class="nav-collapse">
             <ul class="nav">
               <li #{if request.path=='/allTasks'}class="active"#{/if}><a href="/allTasks">Tasks</a></li>
               <li #{if request.path=='/about'}class="active"#{/if}><a href="/about">About</a></li>
               <li #{if request.path=='/contactUs'}class="active"#{/if}><a href="/contactUs">Contact</a></li>
+            </ul>
+          </div>
+          
+          <div class="nav-collapse">
+            <ul class="actions nav pull-right">
+              <li>
+                <a href="/postATask" class="action action-task"><i class="icon-plus-sign icon-white"></i> Post a task</a>
+              </li>
+              <li>
+                <a href="@{UserController.auth()}" class="action action-facebook"><i class="icon-user icon-white"></i> Login with Facebook</a>
+              </li>
+              <li class="dropdown">
+                <a href="#" class="action dropdown-toggle" data-toggle="dropdown">
+                  <i class="icon-user icon-white"></i>
+                  John Doe
+                  <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#"><i class="icon-wrench icon-black"></i> <i class="icon-wrench icon-white"></i> Settings</a></li>
+                  <li class="divider"></li>
+                  <li><a href="javascript:FB.logout();"><i class="icon-off icon-black"></i><i class="icon-off icon-white"></i> Logout</a></li>
+                </ul>
+              </li>
             </ul>
           </div>
         
@@ -55,8 +69,8 @@
       </div>
       
       <footer id="footer">
-        <p class="pull-right">
-          <iframe src="https://www.facebook.com/plugins/like.php?href=http://heinzel.alperowitz.de" scrolling="no" frameborder="0" style="border:none; width:450px; height:80px"></iframe>
+        <p class="pull-left">
+         <div class="fb-like" data-href="http://localhost" data-send="true" data-width="450" data-show-faces="false"></div>
         </p>
       </footer>
       
@@ -66,24 +80,7 @@
     <script>window.jQuery || document.write('<script src="/public/javascripts/jquery-1.7.2.min.js"><\/script>')</script>
     <script src="/public/javascripts/bootstrap.js"></script>
     
-    <!-- Facebook Login -->
-    <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId      : '285484724882779',
-            status     : true, 
-            cookie     : true,
-            xfbml      : true,
-            oauth      : true,
-          });
-    };
-
-        (function(d){
-           var js, id = 'facebook-jssdk'; if (d.getElementById(id)) {return;}
-           js = d.createElement('script'); js.id = id; js.async = true;
-           js.src = "//connect.facebook.net/en_US/all.js";
-           d.getElementsByTagName('head')[0].appendChild(js);
-         }(document));
-     </script>
-
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return;js = d.createElement(s); js.id = id;js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=285484724882779";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script>
+    
 </body></html>

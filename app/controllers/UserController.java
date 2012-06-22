@@ -24,7 +24,9 @@ public class UserController extends Controller {
         if (u != null && u.access_token != null) {
             me = WS.url("https://graph.facebook.com/me?access_token=%s", WS.encode(u.access_token)).get().getJson().getAsJsonObject();
         }
-        render(me);
+        //render(me);
+		
+		TaskController.showAll("allCategories");
     }
 
     public static void auth() {
@@ -53,7 +55,8 @@ public class UserController extends Controller {
     }
 
     static String authURL() {
-        return play.mvc.Router.getFullUrl("Application.auth");
+        return play.mvc.Router.getFullUrl("UserController.auth");
+		// return "http://localhost";
     }
 
     static User connected() {

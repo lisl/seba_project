@@ -9,19 +9,41 @@ body {
   }
 }
 
-.brand {
-  font-family: "Lobster", "Helvetica Neue", Helvetica, Arial, sans-serif;
-}
-
-.navbar .fb-login-button {
-  line-height: 28px;
-  margin-left: .5em;
-}
-
 #footer {
   margin-top: 45px;
   padding: 35px 0 36px;
   border-top: 1px solid #e5e5e5;
+}
+
+/* NAVIGATION BAR */
+
+.brand {
+  font-family: "Lobster", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.actions .action {
+  color: #fff !important;
+  margin-left: 1px;
+}
+
+.actions .action-task {
+  background-color: rgba(91, 183, 91, .5) !important;
+}
+
+.actions .action-facebook {
+  background-color: rgba(59, 89, 152, .5) !important;
+}
+
+.actions .dropdown .icon-white {
+  display: none;
+}
+
+.in.collapse .actions .dropdown .icon-black {
+  display: none;
+}
+
+.in.collapse .actions .dropdown .icon-white {
+  display: inline-block;
 }
 
 /* TASK LIST */
