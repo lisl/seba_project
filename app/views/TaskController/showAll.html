@@ -5,11 +5,11 @@
 	<div id="task-categories" class="well sidebar-nav">
 		<ul class="nav nav-list">
 			<li class="nav-header">Tasks by Category</li>
-			<li #{if selectedCategoryId == 'allCategories'}class="active"#{/if}>
-				<a href="@{showAll('allCategories')}">All Categories</a>
+			<li #{if selectedCategoryId == 'notSelected'}class="active"#{/if}>
+				<a href="@{showAll('notSelected')}">All Categories</a>
 			</li>
-			#{list allCategories, as:'c'}
-			<li #{if selectedCategoryId == c.categoryId}class="active"#{/if}>
+			#{list allCategories, as: 'c'}
+			<li #{if selectedCategoryId.equals(c.categoryId)}class="active"#{/if}>
 	  			<a href="@{showAll(c.categoryId)}">${c.categoryName}</a>
 	  		</li>
 	  		#{/list}
@@ -25,14 +25,14 @@
 		<p>
 			No one has created a task in this category, yet.<br />
 			Go ahead, be the first one!
-			<a class="pull-right btn btn-primary" href="/postATask"><i class="icon-plus-sign icon-white"></i> Post a new task</a>
+			<a class="pull-right btn btn-primary" href="/postTask"><i class="icon-plus-sign icon-white"></i> Post a new task</a>
 		</p>
 	</div>
 	#{/if}
 	#{else}
 	<ul class="task-list">
 		#{list tasksOfCurrentCategory, as:'t'}	
-		<a href="@{view(t, false, false)}">
+		<a href="@{viewExisting(t, false)}">
 			<li class="task">
 				<h3 class="task-title">
 					${t.title}

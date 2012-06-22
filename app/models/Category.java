@@ -1,7 +1,9 @@
 package models;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -17,28 +19,19 @@ public class Category extends Model implements Comparable<Category>
 	public String categoryId;
 	public String categoryName;
 	
-	@OneToMany(fetch=FetchType.LAZY)
+	@OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
 	public List<Task> tasks;
 		
 	public Category()
 	{
-		
+		this.tasks = new LinkedList<Task>();
 	}
 	
 	public Category(String categoryId, String categoryName)
 	{
+		this();
 		this.categoryId = categoryId;
 		this.categoryName = categoryName;
-	}
-	
-	public static List<Category> findAllOrdered()
-	{
-		return Category.find("FROM Category AS c ORDER BY c.categoryName").fetch();
-	}
-	
-	public static Category getByCategoryId(String selectedCategoryId)
-	{
-		return Category.find("FROM Category AS c WHERE c.categoryId = ?", selectedCategoryId).first();
 	}
 
 	@Override
@@ -52,5 +45,22 @@ public class Category extends Model implements Comparable<Category>
 		{
 			return this.categoryName.compareTo(c.categoryName);
 		}
+	}
+	
+	public void addTask(Task task)
+	{
+		task.category = this;
+		this.tasks.add(task);
+		this.save();
+	}
+	
+	public static List<Category> findAllOrdered()
+	{
+		return Category.find("FROM Category AS c ORDER BY c.categoryName").fetch();
+	}
+	
+	public static Category getByCategoryId(String selectedCategoryId)
+	{
+		return Category.find("FROM Category AS c WHERE c.categoryId = ?", selectedCategoryId).first();
 	}
 }

@@ -9,7 +9,17 @@ import play.mvc.Controller;
 
 public class TaskController extends Controller
 {
-	public static void fillOut(Task task)
+	public static void create()
+	{
+		fillOut(null, null);
+	}
+	
+	public static void edit(Task task, String categoryId)
+	{
+		fillOut(task, categoryId);
+	}
+	
+	public static void fillOut(Task task, String categoryId)
 	{
 		List<Category> categories = Category.findAllOrdered();
 		
@@ -21,58 +31,66 @@ public class TaskController extends Controller
 		else
 		{
 			//edit task
-			render(categories, task);
+			render(categories, task, categoryId);
 		}
 	}
 	
-	public static void submit(@Valid Task task)
+	public static void submit(@Valid Task task, String categoryId)
 	{
-		if (task.category == null)
+		if (categoryId.equals("notSelected"))
 		{
-			validation.addError("task.categoryId", "Choose a category");
+			validation.addError("categoryId", "Please choose a category");
 		}
 		
-		if(validation.hasErrors())
+		if (validation.hasErrors())
 		{
-			List<Category> categories = Category.findAllOrdered();
-            render("@fillOut", categories, task);
+			validation.keep();
+			fillOut(task, categoryId);
         }
 		
-		view(task, true, false);
+		preview(task, categoryId);
 	}
 	
-	public static void view(Task task, boolean isPreview, boolean justPosted)
+	public static void save(@Valid Task task, Category category)
 	{
-		render(task, isPreview, justPosted);
-	}
-	
-	public static void save(@Valid Task task)
-	{
-		//TODO: BUG 43897498754789
-		task.category.save();
-		//task.category.merge();
-		task.save();
+		category.addTask(task);
 
-		view(task, false, true);
+		viewExisting(task, true);
+	}
+	
+	public static void preview(Task task, String categoryId)
+	{
+		Category category = Category.getByCategoryId(categoryId);
+		view(task, category, true, false);
+	}
+	
+	public static void viewExisting(Task task, boolean justPosted)
+	{
+		render(task, task.category, false, justPosted);
+	}
+	
+	public static void view(Task task, Category category, boolean isPreview, boolean justPosted)
+	{
+		render(task, category, isPreview, justPosted);
 	}
 	
 	public static void showAll(String selectedCategoryId)
 	{
 		Category selectedCategory;
 		
-		if (selectedCategoryId == null || selectedCategoryId.isEmpty())
+		if (selectedCategoryId == null || selectedCategoryId.isEmpty() || selectedCategoryId.equals(Category.NOT_SELECTED))
 		{
 			selectedCategoryId = Category.NOT_SELECTED;
 			selectedCategory = null;
 		}
 		else
 		{
-			selectedCategory = Category.find("FROM Category AS c WHERE c.categoryId = ?", selectedCategoryId).first();
+			selectedCategory = Category.getByCategoryId(selectedCategoryId);
 		}
 		
 		List<Category> allCategories = Category.findAllOrdered();
 		List<Task> tasksOfCurrentCategory = selectedCategory == null ? (List) Task.findAll() : selectedCategory.tasks;
 		
-		render(allCategories, tasksOfCurrentCategory, selectedCategoryId);
+		render(allCategories, selectedCategoryId, tasksOfCurrentCategory);
 	}
 }

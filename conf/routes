@@ -3,7 +3,8 @@
 # ~~~~
 
 # Home page
-GET     /postATask                              TaskController.fillOut
+GET     /postTask                               TaskController.create
+GET		/viewTask								TaskController.viewExisting
 GET     /allTasks                           	TaskController.showAll
 
 GET     /about                              	Application.about
@@ -21,4 +22,4 @@ GET     /public/                                staticDir:public
 *       /{controller}/{action}                  {controller}.{action}
 
 # CRUD
-*       /admin              module:crud
+*       /admin              					module:crud
