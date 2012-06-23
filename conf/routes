@@ -8,6 +8,7 @@ GET     /allTasks                           	TaskController.showAll
 
 GET     /about                              	Application.about
 GET     /contactUs                              Application.contactUs
+GET		/logout									Application.logout
 
 GET     /                                       Application.index
 

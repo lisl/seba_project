@@ -19,4 +19,11 @@ public class Application extends Controller
 	{
 		render();
 	}
+	
+	public static void logout()
+	{
+		play.mvc.Scope.Session.current().remove("loggedIn");
+		
+		index();
+	}
 }
