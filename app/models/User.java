@@ -8,7 +8,7 @@ import play.db.jpa.Model;
 public class User extends Model {
 
     public long uid;
-    public String access_token;
+    public String accessToken;
 
     public User(long uid) {
         this.uid = uid;

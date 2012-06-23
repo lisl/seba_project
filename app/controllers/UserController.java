@@ -11,7 +11,7 @@ import com.google.gson.JsonObject;
 
 public class UserController extends Controller {
 
-    public static OAuth2 FACEBOOK = new OAuth2(
+    public final static OAuth2 FACEBOOK = new OAuth2(
             "https://graph.facebook.com/oauth/authorize",
             "https://graph.facebook.com/oauth/access_token",
             "285484724882779",
@@ -22,8 +22,8 @@ public class UserController extends Controller {
         User u = connected();
         @SuppressWarnings("unused")
 		JsonObject me = null;
-        if (u != null && u.access_token != null) {
-            me = WS.url("https://graph.facebook.com/me?access_token=%s", WS.encode(u.access_token)).get().getJson().getAsJsonObject();
+        if (u != null && u.accessToken != null) {
+            me = WS.url("https://graph.facebook.com/me?access_token=%s", WS.encode(u.accessToken)).get().getJson().getAsJsonObject();
         }
         //render(me);
 		
@@ -34,7 +34,7 @@ public class UserController extends Controller {
         if (OAuth2.isCodeResponse()) {
             User u = connected();
             OAuth2.Response response = FACEBOOK.retrieveAccessToken(authURL());
-            u.access_token = response.accessToken;
+            u.accessToken = response.accessToken;
             u.save();
             doLogin();
         }
