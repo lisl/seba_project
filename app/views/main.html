@@ -40,13 +40,16 @@
               <li>
                 <a href="/postATask" class="action action-task"><i class="icon-plus-sign icon-white"></i> Post a task</a>
               </li>
+              #{if session['loggedIn'] == null}
               <li>
                 <a href="@{UserController.auth()}" class="action action-facebook"><i class="icon-user icon-white"></i> Login with Facebook</a>
               </li>
+              #{/if}
+              #{if session['loggedIn'] == 'yes'}
               <li class="dropdown">
                 <a href="#" class="action dropdown-toggle" data-toggle="dropdown">
                   <i class="icon-user icon-white"></i>
-                  John Doe
+                  Gennady Shabanov
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
@@ -55,6 +58,7 @@
                   <li><a href="javascript:FB.logout();"><i class="icon-off icon-black"></i><i class="icon-off icon-white"></i> Logout</a></li>
                 </ul>
               </li>
+              #{/if}
             </ul>
           </div>
         

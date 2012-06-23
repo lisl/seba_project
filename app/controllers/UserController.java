@@ -58,6 +58,7 @@ public class UserController extends Controller
 		{
 			user = User.createNew();
 			session.put("uid", user.uid);
+			play.mvc.Scope.Session.current().put("loggedIn", "yes");
 		}
 		renderArgs.put("user", user);
 	}
