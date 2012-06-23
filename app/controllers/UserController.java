@@ -20,7 +20,8 @@ public class UserController extends Controller {
 
     public static void doLogin() {
         User u = connected();
-        JsonObject me = null;
+        @SuppressWarnings("unused")
+		JsonObject me = null;
         if (u != null && u.access_token != null) {
             me = WS.url("https://graph.facebook.com/me?access_token=%s", WS.encode(u.access_token)).get().getJson().getAsJsonObject();
         }
