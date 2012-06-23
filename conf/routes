@@ -4,7 +4,6 @@
 
 # Home page
 GET     /postTask                               TaskController.create
-GET		/viewTask								TaskController.viewExistingById
 GET     /allTasks                           	TaskController.showAll
 
 GET     /about                              	Application.about
