@@ -1,7 +1,45 @@
-# you describe your data using the YAML notation here
-# and then load them using Fixtures.load("data.yml")
+Category(c1):
+  categoryId: "household"
+  categoryName: "Household"
+  
+Category(c2):
+  categoryId: "handyman"
+  categoryName: "Handyman"
+  
+Category(c3):
+  categoryId: "fixComputers"
+  categoryName: "Fix Computers"
+  
+Category(c4):
+  categoryId: "officeHelp"
+  categoryName: "Office Help"
+  
+Category(c5):
+  categoryId: "shopping"
+  categoryName: "Shopping"
+  
+Category(c6):
+  categoryId: "delivery"
+  categoryName: "Delivery"
+  
+Task(t1):
+  title: "Pick up laundry"
+  description: "Please pick up my laundry this afternoon."
+  category: [c6]
+  location: "Berlin"
+  payment: "30"
 
-# User(bob):
-#   email: bob@gmail.com
-#   password: secret
-#   fullname: Bob
+Task(t2):
+  title: "Pick up laundry"
+  description: "Please pick up my laundry this afternoon."
+  category: [c6]
+  location: "Berlin"
+  payment: "30"
+  
+  Task(t3):
+  title: "Pick up laundry"
+  description: "Please pick up my laundry this afternoon."
+  category: [c6]
+  location: "Berlin"
+  payment: "30"  
+  
