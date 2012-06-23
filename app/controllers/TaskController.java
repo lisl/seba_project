@@ -51,8 +51,9 @@ public class TaskController extends Controller
 		preview(task, categoryId);
 	}
 	
-	public static void save(@Valid Task task, Category category)
+	public static void save(@Valid Task task, String categoryId)
 	{
+		Category category = Category.getByCategoryId(categoryId);
 		category.addTask(task);
 
 		viewExisting(task, true);
@@ -61,6 +62,7 @@ public class TaskController extends Controller
 	public static void preview(Task task, String categoryId)
 	{
 		Category category = Category.getByCategoryId(categoryId);
+
 		view(task, category, true, false);
 	}
 	
@@ -72,6 +74,7 @@ public class TaskController extends Controller
 	public static void viewExistingById(long taskId, boolean justPosted)
 	{
 		Task task = Task.findById(taskId);
+
 		viewExisting(task, justPosted);
 	}
 	

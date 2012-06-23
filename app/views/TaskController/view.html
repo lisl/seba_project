@@ -38,7 +38,7 @@
 
 <div class="form-actions">
 	#{if isPreview}
-	<a class="btn btn-success" href="@{save(task, category)}"><i class="icon-ok-sign icon-white"></i> Post this task</a>
+	<a class="btn btn-success" href="@{save(task, category.categoryId)}"><i class="icon-ok-sign icon-white"></i> Post this task</a>
 	<a class="btn" href="@{edit(task, category.categoryId)}">Edit</a>
 	#{/if}
 	#{else}
