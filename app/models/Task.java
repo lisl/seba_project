@@ -36,8 +36,6 @@ public class Task extends Model
 	@Required @As("dd.MM.yyyy")
 	public Date creationDate;
 	
-	public String categoryId;
-	
 	@ManyToOne
 	public Category category;
 	
@@ -55,4 +53,6 @@ public class Task extends Model
 	{
 		return Task.find("FROM Task AS t WHERE t.category.categoryId = ?", selectedCategory.categoryId).fetch();
 	}
+	
+	public String categoryId;
 }
