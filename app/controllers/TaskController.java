@@ -27,7 +27,7 @@ public class TaskController extends Controller
 	
 	public static void submit(@Valid Task task)
 	{
-		if (task.category == null)
+		if (task.categoryId.equals(Category.NOT_SELECTED))
 		{
 			validation.addError("task.categoryId", "Choose a category");
 		}
@@ -48,9 +48,8 @@ public class TaskController extends Controller
 	
 	public static void save(@Valid Task task)
 	{
-		//TODO: BUG 43897498754789
-		task.category.save();
-		//task.category.merge();
+		Category category = Category.getByCategoryId(task.categoryId);
+		task.category = category;
 		task.save();
 
 		view(task, false, true);
@@ -71,7 +70,7 @@ public class TaskController extends Controller
 		}
 		
 		List<Category> allCategories = Category.findAllOrdered();
-		List<Task> tasksOfCurrentCategory = selectedCategory == null ? (List) Task.findAll() : selectedCategory.tasks;
+		List<Task> tasksOfCurrentCategory = selectedCategory == null ? (List) Task.findAll() : Task.getTasksByCategory(selectedCategory);
 		
 		render(allCategories, tasksOfCurrentCategory, selectedCategoryId);
 	}

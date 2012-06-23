@@ -1,7 +1,9 @@
 package models;
 
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
@@ -17,12 +19,9 @@ public class Category extends Model implements Comparable<Category>
 	public String categoryId;
 	public String categoryName;
 	
-	@OneToMany(fetch=FetchType.LAZY)
-	public List<Task> tasks;
 		
 	public Category()
 	{
-		
 	}
 	
 	public Category(String categoryId, String categoryName)

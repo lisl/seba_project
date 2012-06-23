@@ -2,6 +2,7 @@ package models;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -35,6 +36,8 @@ public class Task extends Model
 	@Required @As("dd.MM.yyyy")
 	public Date creationDate;
 	
+	public String categoryId;
+	
 	@ManyToOne
 	public Category category;
 	
@@ -43,25 +46,13 @@ public class Task extends Model
 		this.creationDate = new Date();
 	}
 	
-	public void setCategoryId(String value)
-	{
-		category = Category.find("FROM Category AS c WHERE c.categoryId = ?", value).first();
-	}
-	
-	public String getCategoryId()
-	{
-		if (category == null)
-		{
-			return Category.NOT_SELECTED;
-		}
-		else
-		{
-			return category.categoryId;
-		}
-	}
-	
 	public String getCreationDateAsString()
 	{
 		return Utilities.formatDate(creationDate);
+	}
+	
+	public static List getTasksByCategory(Category selectedCategory)
+	{
+		return Task.find("FROM Task AS t WHERE t.category.categoryId = ?", selectedCategory.categoryId).fetch();
 	}
 }
