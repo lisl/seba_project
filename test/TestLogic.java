@@ -45,8 +45,8 @@ public class TestLogic extends UnitTest
 	@Test
 	public void findInCategory()
 	{
-		List<Task> tasks = Category.getByCategoryId("delivery").getTasks();
+		List<Task> tasks = Task.getTasksByCategory(Category.getByCategoryId("delivery"));
 		
-		assertNotNull(tasks);
+		assertEquals(3, tasks.size());
 	}
 }

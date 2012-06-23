@@ -23,21 +23,21 @@ Category(c6):
   categoryName: "Delivery"
   
 Task(t1):
-  title: "Pick up laundry"
+  title: "Pick up laundry 1"
   description: "Please pick up my laundry this afternoon."
   category: [c6]
   location: "Berlin"
   payment: "30"
 
 Task(t2):
-  title: "Pick up laundry"
+  title: "Pick up laundry 2"
   description: "Please pick up my laundry this afternoon."
   category: [c6]
   location: "Berlin"
   payment: "30"
   
-  Task(t3):
-  title: "Pick up laundry"
+Task(t3):
+  title: "Pick up laundry 3"
   description: "Please pick up my laundry this afternoon."
   category: [c6]
   location: "Berlin"
